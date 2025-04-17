@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
@@ -35,70 +34,75 @@ const Testimonials = () => {
   ];
   const pics = [
     {
-     
       logo: "/google.png",
     },
     {
-     
       logo: "/li.png",
     },
     {
-     
       logo: "/fb.png",
     },
     {
-     
       logo: "/ms.png",
     },
     {
-     
       logo: "/apple.png",
     },
-  
   ];
+  const currentPath = window.location.pathname;
 
   return (
     <section id="testimonials" className="bg-consultant-gray py-16 md:py-24">
-      <div className="section-container">
+      <div
+        className={`section-container ${
+          currentPath === "/" ? "reveal-on-scroll" : ""
+        }`}
+      >
         <h2 className="section-title text-center">Client Testimonials</h2>
         <p className="section-subtitle text-center mx-auto">
-          Don't just take my word for it - here's what clients have to say about working with me.
+          Don't just take my word for it - here's what clients have to say about
+          working with me.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        {testimonials.map((testimonial, index) => (
-  <Card
-    key={index}
-    className="border-none shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-    style={{ animationDelay: `${index * 0.2}s` }}
-  >
-    <CardContent className="p-8">
-      <div className="flex justify-between items-start mb-6">
-        <div>
-          <h3 className="font-bold text-consultant-navy">{testimonial.name}</h3>
-          <p className="text-consultant-darkGray text-sm">{testimonial.position}</p>
-        </div>
-        <img
-          src={testimonial.logo}
-          alt={`${testimonial.company} logo`}
-          className=" rounded-lg w-15 h-10"
-        />
-      </div>
+          {testimonials.map((testimonial, index) => (
+            <Card
+              key={index}
+              className="border-none shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <CardContent className="p-8">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 className="font-bold text-consultant-navy">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-consultant-darkGray text-sm">
+                      {testimonial.position}
+                    </p>
+                  </div>
+                  <img
+                    src={testimonial.logo}
+                    alt={`${testimonial.company} logo`}
+                    className=" rounded-lg w-15 h-10"
+                  />
+                </div>
 
-      <div className="flex mb-4">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <Star
-            key={i}
-            className="h-5 w-5 text-yellow-400 fill-yellow-400"
-          />
-        ))}
-      </div>
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 text-yellow-400 fill-yellow-400"
+                    />
+                  ))}
+                </div>
 
-      <p className="text-consultant-darkGray italic">"{testimonial.content}"</p>
-    </CardContent>
-  </Card>
-))}
- 
+                <p className="text-consultant-darkGray italic">
+                  "{testimonial.content}"
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         <div className="mt-16 ">

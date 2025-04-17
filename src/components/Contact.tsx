@@ -134,10 +134,18 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium text-white">Office</h4>
                     <p className="text-white/80">
-                      123 Business Ave, Suite 500
+                      NED University Of Engineering & Technology
                       <br />
-                      New York, NY 10001
+                      Karachi, Pakistan
                     </p>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57865.217401361486!2d67.19138301975936!3d24.980533506609483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb338b8d4494c91%3A0xf864ed97b4a8ec0e!2sNED%20University%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2s!4v1744880505656!5m2!1sen!2s"
+                      width="100%"
+                      height="200"
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                   </div>
                 </div>
               </div>

@@ -1,27 +1,45 @@
-
 import React from "react";
 import { Facebook, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/mughees-subtain-17aab72ba/", label: "LinkedIn" },
-    { icon: <Twitter className="h-5 w-5" />, href: "https://x.xom/__ahmvd_", label: "Twitter" },
-    { icon: <Facebook className="h-5 w-5" />, href: "https://web.facebook.com/ahmedraza000123?_rdc=1&_rdr#", label: "Facebook" },
-    { icon: <Instagram className="h-5 w-5" />, href: "https://www.instagram.com/ahm4rfr/", label: "Instagram" },
-    { icon: <Mail className="h-5 w-5" />, href: "mugheessubtain@gmail.com", label: "Email" },
+    {
+      icon: <Linkedin className="h-5 w-5" />,
+      href: "https://www.linkedin.com/in/mughees-subtain-17aab72ba/",
+      label: "LinkedIn",
+    },
+    {
+      icon: <Twitter className="h-5 w-5" />,
+      href: "https://x.xom/__ahmvd_",
+      label: "Twitter",
+    },
+    {
+      icon: <Facebook className="h-5 w-5" />,
+      href: "https://web.facebook.com/ahmedraza000123?_rdc=1&_rdr#",
+      label: "Facebook",
+    },
+    {
+      icon: <Instagram className="h-5 w-5" />,
+      href: "https://www.instagram.com/ahm4rfr/",
+      label: "Instagram",
+    },
+    {
+      icon: <Mail className="h-5 w-5" />,
+      href: "mugheessubtain@gmail.com",
+      label: "Email",
+    },
   ];
 
   const footerLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Skills", href: "/skills" },
+    { name: "Contact", href: "/contact" },
+    { name: "Services", href: "/services" },
+    { name: "Testimonials", href: "/testimonials" },
   ];
 
   return (
@@ -35,7 +53,9 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Expert business consulting services to help your organization overcome challenges, optimize operations, and achieve sustainable growth.
+              Expert business consulting services to help your organization
+              overcome challenges, optimize operations, and achieve sustainable
+              growth.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
