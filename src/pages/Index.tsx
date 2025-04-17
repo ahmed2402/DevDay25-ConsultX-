@@ -1,12 +1,9 @@
-
 import React, { useEffect } from "react";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 
@@ -30,33 +27,32 @@ const Index = () => {
     };
 
     document.addEventListener("click", handleSmoothScroll);
-    
+
     // Initialize reveal on scroll animation
     const handleScrollAnimation = () => {
-      const elements = document.querySelectorAll('.reveal-on-scroll');
-      elements.forEach(el => {
+      const elements = document.querySelectorAll(".reveal-on-scroll");
+      elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        const isVisible = (rect.top <= window.innerHeight * 0.8);
-        
+        const isVisible = rect.top <= window.innerHeight * 0.8;
+
         if (isVisible) {
-          el.classList.add('revealed');
+          el.classList.add("revealed");
         }
       });
     };
-    
-    window.addEventListener('scroll', handleScrollAnimation);
+
+    window.addEventListener("scroll", handleScrollAnimation);
     // Initial check
     setTimeout(handleScrollAnimation, 100);
-    
+
     return () => {
       document.removeEventListener("click", handleSmoothScroll);
-      window.removeEventListener('scroll', handleScrollAnimation);
+      window.removeEventListener("scroll", handleScrollAnimation);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
       <Hero />
       <About />
       <Services />
@@ -64,7 +60,6 @@ const Index = () => {
       <Testimonials />
       <Skills />
       <Contact />
-      <Footer />
     </div>
   );
 };

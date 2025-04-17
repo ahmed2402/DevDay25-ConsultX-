@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,33 +15,35 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Skills", href: "/skills" },
+    { name: "Contact", href: "/contact" },
+    { name: "Services", href: "/services" },
   ];
 
   return (
-    <header className={cn(
-      "fixed w-full z-50 transition-all duration-300", 
-      scrolled 
-        ? "bg-background/80 backdrop-blur-md border-b border-white/10 py-2" 
-        : "bg-transparent py-4"
-    )}>
+    <header
+      className={cn(
+        "fixed w-full z-50 transition-all duration-300",
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-white/10 py-2"
+          : "md:bg-transparent py-4"
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#" className="flex items-center">
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-accent">
-                Alex<span className="text-accent">Dev</span>
+              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-accent">
+                Consult<span className="text-accent">X</span>
               </span>
             </a>
           </div>
@@ -69,7 +70,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="z-50 bg-background md:hidden">
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-full bg-muted text-muted-foreground hover:text-accent"

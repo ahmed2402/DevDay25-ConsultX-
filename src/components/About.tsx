@@ -35,13 +35,13 @@ const About = () => {
               <div className="consultant-card p-2">
                 <img
                   src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop"
-                  alt="Professional headshot of Alex Parker"
+                  alt="Professional headshot of Consult X"
                   className="rounded-lg w-full h-auto object-cover"
                 />
               </div>
               <div className="absolute -bottom-5 -right-5">
                 <div className="bg-consultant-blue p-4 rounded-lg shadow-lg text-white">
-                  <p className="text-sm font-semibold">Alex Parker</p>
+                  <p className="text-sm font-semibold">Consult X</p>
                   <p className="text-xs text-white/80">Business Strategy Consultant</p>
                 </div>
               </div>
