@@ -1,11 +1,7 @@
 
-# ConsultantPro - Professional Business Consulting Website
+# ConsultX - Professional Business Consulting Website
 
 A professional, clean, and modern website for business consultants. Built with React, TypeScript, and Tailwind CSS.
-
-## Project info
-
-**URL**: https://lovable.dev/projects/01f24f8b-abfe-4396-8ff8-259c9276cb78
 
 ## Features
 
@@ -34,14 +30,6 @@ A professional, clean, and modern website for business consultants. Built with R
 - Lucide Icons
 - React Router
 
-## How to Use
-
-1. Customize the consultant information in each component
-2. Replace placeholder images with your own professional photos
-3. Update service descriptions and pricing to match your offerings
-4. Add your own case studies and client testimonials
-5. Connect the contact form to your preferred form handling service
-
 ## Getting Started
 
 Follow these steps to run the project locally:
@@ -69,7 +57,4 @@ Most customization can be done by editing the following files:
 - Replace images with your own professional photos
 - Modify text content in each section component
 
-## Deployment
-
-To deploy your consultant website, use the built-in deployment feature in Lovable or connect to your preferred hosting service.
 
