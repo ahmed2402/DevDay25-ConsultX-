@@ -9,6 +9,8 @@ import NotFound from "./pages/NotFound";
 import Services from "./components/Services";
 import Layout from "./Layout";
 import Skills from "./components/Skills";
+import ContactPage from "./pages/Contact";
+import Contact from "./components/Contact";
 
 const queryClient = new QueryClient();
 
