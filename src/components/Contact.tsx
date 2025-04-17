@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const currentPath = window.location.pathname;
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -26,54 +27,57 @@ const Contact = () => {
     }));
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(formData);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
+    // Add Web3Forms access key
     formData.append("access_key", "816beb61-89ea-4f64-9677-8b00703ab985");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
+    try {
       toast({
-        title: "Message Sent!",
-        description:
-          "Thank you for reaching out. I'll get back to you within 24 hours.",
+        title: "Sending...",
+        description: "Your message is being sent.",
+        duration: 2000,
       });
-    } else {
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you! I'll respond within 24 hours.",
+          duration: 5000,
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        throw new Error(data.message || "Submission failed");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
       toast({
-        title: "Something Went Wrong!",
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
       });
     }
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-    });
-  };
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // const formData = new FormData(formData);
-    toast({
-      title: "Message Sent!",
-      description:
-        "Thank you for reaching out. I'll get back to you within 24 hours.",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-    });
   };
 
   return (
@@ -105,10 +109,10 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium text-white">Email</h4>
                     <a
-                      href="mailto:alex@consultantexample.com"
+                      href="mailto:ayanjawed.m@gmail.com"
                       className="text-white/80 hover:text-white"
                     >
-                      alex@consultantexample.com
+                      ayanjawed.m@gmail.com
                     </a>
                   </div>
                 </div>
@@ -119,7 +123,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-white">Phone</h4>
-                    <p className="text-white/80">+1 (555) 123-4567</p>
+                    <p className="text-white/80">+92 319 6852725</p>
                   </div>
                 </div>
 
@@ -134,18 +138,6 @@ const Contact = () => {
                       <br />
                       New York, NY 10001
                     </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-consultant-blue/20 p-3 rounded-lg mr-4 text-consultant-blue">
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-white">Calendar</h4>
-                    <a href="#" className="text-white/80 hover:text-white">
-                      Schedule a meeting
-                    </a>
                   </div>
                 </div>
               </div>
@@ -166,9 +158,13 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-3 reveal-on-scroll">
+          <div
+            className={`lg:col-span-3 ${
+              currentPath === "/" ? "reveal-on-scroll" : ""
+            }`}
+          >
             <form
-              onSubmit={handleSubmit}
+              onSubmit={onSubmit}
               className="bg-white p-8 rounded-lg shadow-lg"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

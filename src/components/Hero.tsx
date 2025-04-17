@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section
       id="home"
@@ -31,12 +33,18 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-consultant-blue hover:bg-opacity-90 text-white px-6 py-6 text-lg rounded-md group">
+              <Button
+                onClick={() => navigate("/contact")}
+                className="bg-consultant-blue hover:bg-opacity-90 text-white px-6 py-6 text-lg rounded-md group"
+              >
                 Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              
-              <Button variant="outline" className="border-white text-consultant-blue hover:bg-white/10 px-6 py-6 text-lg rounded-md">
+
+              <Button
+                variant="outline"
+                className="border-white text-consultant-blue hover:bg-white/10 px-6 py-6 text-lg rounded-md"
+              >
                 <Download className="mr-2 h-5 w-5" />
                 <a href="../../constants/Ayan Mirza.pdf" download>
                   Download

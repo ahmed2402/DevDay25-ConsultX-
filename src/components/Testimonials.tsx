@@ -9,7 +9,7 @@ const Testimonials = () => {
       name: "Sarah Johnson",
       position: "CEO, TechGrowth Inc.",
       company: "TechGrowth Inc.",
-      logo: "/public/logo1.webp",
+      logo: "/logo1.webp",
       content:
         "Working with ConsultX was transformative for our business. His strategic insights helped us pivot during a challenging market period and emerge stronger than before. The ROI on our consulting engagement exceeded our expectations by 300%.",
       rating: 5,
@@ -18,7 +18,7 @@ const Testimonials = () => {
       name: "Michael Chen",
       position: "CFO, Global Finance Group",
       company: "Global Finance",
-      logo: "/public/logo2.avif",
+      logo: "/logo2.avif",
       content:
         "I was impressed by ConsultX thorough analysis and practical recommendations. We implemented the suggested strategy and saw a 40% improvement in operational efficiency within the first quarter. I highly recommend his services.",
       rating: 5,
@@ -27,7 +27,7 @@ const Testimonials = () => {
       name: "Elizabeth Reyes",
       position: "COO, Retail Solutions",
       company: "Retail Solutions",
-      logo: "/public/logo4.avif",
+      logo: "/logo4.avif",
       content:
         "The consulting engagement delivered exceptional value. ConsultX quickly identified key areas for improvement and provided a clear, actionable roadmap. Six months later, we've increased market share by 15% and reduced overhead by 22%.",
       rating: 5,
@@ -36,23 +36,23 @@ const Testimonials = () => {
   const pics = [
     {
      
-      logo: "/public/google.png",
+      logo: "/google.png",
     },
     {
      
-      logo: "/public/li.png",
+      logo: "/li.png",
     },
     {
      
-      logo: "/public/fb.png",
+      logo: "/fb.png",
     },
     {
      
-      logo: "/public/ms.png",
+      logo: "/ms.png",
     },
     {
      
-      logo: "/public/apple.png",
+      logo: "/apple.png",
     },
   
   ];
