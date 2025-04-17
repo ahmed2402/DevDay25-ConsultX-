@@ -31,7 +31,7 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 px-6 py-6 text-lg rounded-md">
+              <Button variant="outline" className="border-white text-consultant-blue hover:bg-white/10 px-6 py-6 text-lg rounded-md">
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>

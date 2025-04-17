@@ -30,7 +30,7 @@ const About = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mt-16">
-          <div className="md:col-span-5 reveal-on-scroll">
+          <div className="md:col-span-5">
             <div className="relative">
               <div className="consultant-card p-2">
                 <img
@@ -48,7 +48,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="md:col-span-7 reveal-on-scroll">
+          <div className="md:col-span-7 ">
             <h3 className="text-2xl font-bold text-consultant-navy mb-6">My Approach to Consulting</h3>
             <p className="text-consultant-darkGray mb-6">
               I believe in a data-driven, results-oriented approach to business consulting. My methodology combines rigorous analysis with practical implementation strategies that drive measurable outcomes for my clients.

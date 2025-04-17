@@ -35,7 +35,7 @@ const Skills = () => {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
-          <div className="consultant-card p-8 reveal-on-scroll">
+          <div className="consultant-card p-8 ">
             <h3 className="text-xl font-bold text-consultant-navy mb-6 flex items-center">
               <span className="bg-consultant-blue/10 text-consultant-blue p-2 rounded-lg mr-3">01</span>
               Business Skills
@@ -59,7 +59,7 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="consultant-card p-8 reveal-on-scroll" style={{ animationDelay: "0.2s" }}>
+          <div className="consultant-card p-8 " style={{ animationDelay: "0.2s" }}>
             <h3 className="text-xl font-bold text-consultant-navy mb-6 flex items-center">
               <span className="bg-consultant-blue/10 text-consultant-blue p-2 rounded-lg mr-3">02</span>
               Industry Knowledge
@@ -83,7 +83,7 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="consultant-card p-8 reveal-on-scroll" style={{ animationDelay: "0.4s" }}>
+          <div className="consultant-card p-8 " style={{ animationDelay: "0.4s" }}>
             <h3 className="text-xl font-bold text-consultant-navy mb-6 flex items-center">
               <span className="bg-consultant-blue/10 text-consultant-blue p-2 rounded-lg mr-3">03</span>
               Leadership Qualities

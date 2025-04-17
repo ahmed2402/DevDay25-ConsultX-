@@ -45,7 +45,7 @@ const Projects = () => {
               key={index}
               className={`grid grid-cols-1 ${
                 index % 2 === 0 ? "md:grid-cols-[3fr,2fr]" : "md:grid-cols-[2fr,3fr] md:[grid-template-areas:'image_content']"
-              } gap-8 items-center reveal-on-scroll`}
+              } gap-8 items-center `}
             >
               <div 
                 className={`md:${index % 2 === 0 ? "" : "[grid-area:image]"}`}
