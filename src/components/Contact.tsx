@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -16,7 +16,9 @@ const Contact = () => {
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -24,15 +26,47 @@ const Contact = () => {
     }));
   };
 
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(formData);
+
+    formData.append("access_key", "816beb61-89ea-4f64-9677-8b00703ab985");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      toast({
+        title: "Message Sent!",
+        description:
+          "Thank you for reaching out. I'll get back to you within 24 hours.",
+      });
+    } else {
+      toast({
+        title: "Something Went Wrong!",
+      });
+    }
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      message: "",
+    });
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    
+    // const formData = new FormData(formData);
     toast({
       title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+      description:
+        "Thank you for reaching out. I'll get back to you within 24 hours.",
     });
-    
+
     setFormData({
       name: "",
       email: "",
@@ -47,17 +81,22 @@ const Contact = () => {
       <div className="section-container">
         <h2 className="section-title text-white text-center">Contact Me</h2>
         <p className="section-subtitle text-white/80 text-center mx-auto">
-          Ready to transform your business? Let's start a conversation about your specific challenges and goals.
+          Ready to transform your business? Let's start a conversation about
+          your specific challenges and goals.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mt-12">
-          <div className="lg:col-span-2 reveal-on-scroll">
+          <div className="lg:col-span-2">
             <div className="bg-white/5 p-8 rounded-lg border border-white/10 h-full">
-              <h3 className="text-2xl font-bold text-white mb-6">Let's Discuss Your Business Needs</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Let's Discuss Your Business Needs
+              </h3>
               <p className="text-white/80 mb-8">
-                I'm available for consulting engagements, speaking opportunities, and strategic partnerships. Feel free to reach out to discuss how we might work together.
+                I'm available for consulting engagements, speaking
+                opportunities, and strategic partnerships. Feel free to reach
+                out to discuss how we might work together.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-consultant-blue/20 p-3 rounded-lg mr-4 text-consultant-blue">
@@ -65,24 +104,25 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-white">Email</h4>
-                    <a href="mailto:alex@consultantexample.com" className="text-white/80 hover:text-white">
+                    <a
+                      href="mailto:alex@consultantexample.com"
+                      className="text-white/80 hover:text-white"
+                    >
                       alex@consultantexample.com
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="bg-consultant-blue/20 p-3 rounded-lg mr-4 text-consultant-blue">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
                     <h4 className="font-medium text-white">Phone</h4>
-                    <p className="text-white/80">
-                      +1 (555) 123-4567
-                    </p>
+                    <p className="text-white/80">+1 (555) 123-4567</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="bg-consultant-blue/20 p-3 rounded-lg mr-4 text-consultant-blue">
                     <MapPin className="h-5 w-5" />
@@ -90,12 +130,13 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium text-white">Office</h4>
                     <p className="text-white/80">
-                      123 Business Ave, Suite 500<br />
+                      123 Business Ave, Suite 500
+                      <br />
                       New York, NY 10001
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="bg-consultant-blue/20 p-3 rounded-lg mr-4 text-consultant-blue">
                     <Calendar className="h-5 w-5" />
@@ -108,13 +149,13 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-10 pt-8 border-t border-white/10">
                 <h4 className="font-medium text-white mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
-                  <a 
-                    href="https://linkedin.com" 
-                    target="_blank" 
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white/5 hover:bg-consultant-blue/20 p-3 rounded-lg text-white transition-colors"
                   >
@@ -124,12 +165,18 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="lg:col-span-3 reveal-on-scroll">
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-8 rounded-lg shadow-lg"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-consultant-navy">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium text-consultant-navy"
+                  >
                     Your Name*
                   </label>
                   <Input
@@ -139,12 +186,15 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="John Smith"
                     required
-                    className="border-consultant-lightGray focus-visible:ring-consultant-blue"
+                    className="border-consultant-lightGray text-primary focus-visible:ring-consultant-blue"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-consultant-navy">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-medium text-consultant-navy"
+                  >
                     Email Address*
                   </label>
                   <Input
@@ -155,12 +205,15 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="john@example.com"
                     required
-                    className="border-consultant-lightGray focus-visible:ring-consultant-blue"
+                    className="border-consultant-lightGray text-primary focus-visible:ring-consultant-blue"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label htmlFor="company" className="text-sm font-medium text-consultant-navy">
+                  <label
+                    htmlFor="company"
+                    className="text-sm font-medium text-consultant-navy"
+                  >
                     Company
                   </label>
                   <Input
@@ -169,12 +222,15 @@ const Contact = () => {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Your Company"
-                    className="border-consultant-lightGray focus-visible:ring-consultant-blue"
+                    className="border-consultant-lightGray text-primary focus-visible:ring-consultant-blue"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-consultant-navy">
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium text-consultant-navy"
+                  >
                     Phone Number
                   </label>
                   <Input
@@ -183,13 +239,16 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+1 (555) 123-4567"
-                    className="border-consultant-lightGray focus-visible:ring-consultant-blue"
+                    className="border-consultant-lightGray text-primary focus-visible:ring-consultant-blue"
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2 mb-6">
-                <label htmlFor="message" className="text-sm font-medium text-consultant-navy">
+                <label
+                  htmlFor="message"
+                  className="text-sm font-medium text-consultant-navy"
+                >
                   How can I help you?*
                 </label>
                 <Textarea
@@ -199,23 +258,30 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Tell me about your business needs and how I might be able to assist..."
                   required
-                  className="border-consultant-lightGray focus-visible:ring-consultant-blue min-h-[150px]"
+                  className="border-consultant-lightGray text-primary focus-visible:ring-consultant-blue min-h-[150px]"
                 />
               </div>
-              
+
               <div className="flex items-center space-x-2 mb-6">
-                <input 
-                  type="checkbox" 
-                  id="privacy" 
+                <input
+                  type="checkbox"
+                  id="privacy"
                   className="rounded border-consultant-lightGray text-consultant-blue focus:ring-consultant-blue"
                   required
                 />
-                <label htmlFor="privacy" className="text-sm text-consultant-darkGray">
-                  I agree to the <a href="#" className="text-consultant-blue hover:underline">Privacy Policy</a> and consent to being contacted regarding my inquiry.
+                <label
+                  htmlFor="privacy"
+                  className="text-sm text-consultant-darkGray"
+                >
+                  I agree to the{" "}
+                  <a href="#" className="text-consultant-blue hover:underline">
+                    Privacy Policy
+                  </a>{" "}
+                  and consent to being contacted regarding my inquiry.
                 </label>
               </div>
-              
-              <Button 
+
+              <Button
                 type="submit"
                 className="w-full bg-consultant-blue hover:bg-consultant-navy text-white rounded-md"
               >
