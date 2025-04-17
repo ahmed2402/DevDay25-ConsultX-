@@ -9,6 +9,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const currentPath = window.location.pathname;
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -30,16 +32,16 @@ const Navbar = () => {
     { name: "Contact", href: "#contact" },
     { name: "Services", href: "/services" },
     { name: "Testimonials", href: "/testimonials" },
-
   ];
 
   return (
     <header
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
-        scrolled
+          scrolled
           ? "bg-background/80 backdrop-blur-md border-b border-white/10 py-2"
-          : "bg-transparent py-4"
+          : "bg-transparent py-4",
+
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -58,15 +60,11 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={
-                  cn(
-                    scrolled
+                className={cn(
+                  scrolled
                     ? "text-base font-medium hover:text-accent transition-colors duration-200 relative group"
                     : "text-base text-white font-medium hover:text-accent transition-colors duration-200 relative group"
-                   
-                  )
-                }
-
+                )}
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
@@ -77,14 +75,7 @@ const Navbar = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden md:flex items-center">
             <Button
-              onClick={() => {
-                navigate("#contact");
-                setTimeout(() => {
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }, 0);
-              }}
+              onClick={() => navigate("/contact")}
               className="bg-accent hover:bg-accent/90 text-white rounded-xl glow-effect"
             >
               Let's Connect
