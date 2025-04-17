@@ -29,6 +29,8 @@ const Navbar = () => {
     { name: "Skills", href: "/skills" },
     { name: "Contact", href: "#contact" },
     { name: "Services", href: "/services" },
+    { name: "Testimonials", href: "/testimonials" },
+
   ];
 
   return (
@@ -56,7 +58,15 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium text-muted-foreground hover:text-accent transition-colors duration-200 relative group"
+                className={
+                  cn(
+                    scrolled
+                    ? "text-base font-medium hover:text-accent transition-colors duration-200 relative group"
+                    : "text-base text-white font-medium hover:text-accent transition-colors duration-200 relative group"
+                   
+                  )
+                }
+
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
@@ -82,7 +92,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="z-50 md:hidden">
+          <div className="z-50 bg-background md:hidden rounded-xl">
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-full bg-muted text-muted-foreground hover:text-accent"
@@ -97,7 +107,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div
         className={cn(
-          "md:hidden absolute top-16 left-0 w-full glass-card",
+          "md:hidden bg-white absolute top-16 left-0 w-full glass-card rounded-lg",
           isMenuOpen ? "block" : "hidden"
         )}
       >
